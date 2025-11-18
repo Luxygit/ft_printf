@@ -6,7 +6,7 @@
 #    By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/05 12:31:55 by dievarga          #+#    #+#              #
-#    Updated: 2025/10/08 19:42:56 by dievarga         ###   ########.fr        #
+#    Updated: 2025/11/18 22:30:08 by dievarga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,13 @@ CC      = cc
 CFLAGS  = -Wall -Wextra -Werror -I.
 
 # Library name
-NAME    = libft.a
+NAME    = libftprintf.a
 
 # Source and object files
-SRCS = ft_isascii.c ft_memcpy.c ft_putstr_fd.c ft_strlcat.c ft_strrchr.c ft_atoi.c ft_isdigit.c ft_memmove.c ft_split.c ft_strlcpy.c ft_strtrim.c ft_bzero.c ft_isprint.c ft_memset.c ft_strchr.c ft_strlen.c ft_substr.c ft_calloc.c ft_itoa.c ft_putchar_fd.c ft_strdup.c ft_strmapi.c ft_tolower.c ft_isalnum.c ft_memchr.c ft_putendl_fd.c ft_striteri.c ft_strncmp.c ft_toupper.c ft_isalpha.c ft_memcmp.c ft_putnbr_fd.c ft_strjoin.c ft_strnstr.c
+SRCS	= ft_printf.c ft_
+
 OBJ     = $(SRCS:%.c=%.o)
-HEADER = libft.h
+HEADER = libftprintf.h
 
 # Default rule
 all: $(NAME)
@@ -30,7 +31,7 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 # Rule to compile .c to .o
-%.o: %.c $(HEADER)
+%.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean object files
