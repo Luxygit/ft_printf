@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chars.c                                         :+:      :+:    :+:   */
+/*   ft_unsigned.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 18:47:04 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/21 19:13:13 by dievarga         ###   ########.fr       */
+/*   Created: 2025/11/21 19:12:18 by dievarga          #+#    #+#             */
+/*   Updated: 2025/11/21 21:42:32 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_chars(va_list *args, int *count)
+static void	ft_putnbr(unsigned int n, int *count)
 {
-	char	ch;
+	char	c;
 
-	ch = (char)va_arg(*args, int);
-	write(1, &ch, 1);
+	if (n >= 10)
+		ft_putnbr(n / 10, count);
+	c = (n % 10) + '0';
+	write(1, &c, 1);
 	(*count)++;
+}
+
+void	ft_unsigned(va_list *args, int *count)
+{
+	unsigned int	n;
+
+	n = va_arg(*args, unsigned int);
+	ft_putnbr(n, count);
 }

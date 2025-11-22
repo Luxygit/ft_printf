@@ -6,47 +6,66 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 18:29:20 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/18 20:43:31 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/22 20:53:55 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stddef.h>
+#include "libftprintf.h"
 
-static int	ft_strncmp(const char *s1, const char *s2, size_t n)
+static void	ft_detect(const char **p, va_list *args, int *count)
 {
-	if (n == 0)
-		return (0);
-	while (*s1 != '\0' && *s2 != '\0' && n > 1 && *s1 == *s2)
+	if (**p == 'c')
+		ft_chars(args, count);
+	else if (**p == 's')
+		ft_strings(args, count);
+	else if (**p == 'd' || **p == 'i')
+		ft_decimals(args, count);
+	else if (**p == 'p')
+		ft_pointers(args, count);
+	else if (**p == 'u')
+		ft_unsigned(args, count);
+	else if (**p == 'x')
+		ft_hexl(args, count);
+	else if (**p == 'X')
+		ft_hexu(args, count);
+	else
 	{
-		s1++;
-		s2++;
-		n--;
+		write(1, "%", 1);
+		write(1, *p, 1);
+		(*count) += 2;
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
+
+static void	ft_printchar(char c, int *count)
+{
+	write(1, &c, 1);
+	(*count)++;
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int	cmp;
+	va_list		args;
+	int			count;
+
 	va_start(args, format);
-	while (args)
+	count = 0;
+	while (*format)
 	{
-		cmp = ft_strncmp(va_arg(args, const char*));
-		if (cmp == 0)
-		{	
-			write(1, &c, 1);
-		}
-		if (cmp == "%d")
+		if (*format == '%')
 		{
-			write(1, %d, 4);
+			format++;
+			if (*format)
+				ft_detect(&format, &args, &count);
+			else
+				ft_printchar('%', &count);
 		}
-		va_arg(args, const char*);
+		else
+			ft_printchar(*format, &count);
+		if (*format)
+			format++;
 	}
 	va_end(args);
-	return (0);
+	return (count);
 }
 
 /*
@@ -56,13 +75,17 @@ will be printed.
 As a variadic function it also needs to know
 how many arguments it has in this case, by
 seeing how many "%..." there are as args.
-it initializes the va_list type args 
-*/
+it initializes the va_list type args and cpy
+and va_starts initializes the first argument
 
+
+*/
+/*
 #include <stdio.h>
 int	main(void)
 {
-	ft_printf("%c %d",'a', 1);
-	printf("%c %d", 'a', 1);
+	int	a = ft_printf("ft_printf prints %c %s %d %i %u %p %x %X\n",'a', "hola", -10, -214, 5, "asd", 123, 123);
+	int	b = printf("og printf prints %c %s %d %i %u %p %x %X\n", 'a', "hola", -10, -214, 5, "asd", 123, 123);
+	printf("ft_printf returns %d chars\nog printf returns %d chars\n", a, b);
 	return (0);
-}
+}*/

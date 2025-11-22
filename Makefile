@@ -6,7 +6,7 @@
 #    By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/05 12:31:55 by dievarga          #+#    #+#              #
-#    Updated: 2025/11/18 22:30:08 by dievarga         ###   ########.fr        #
+#    Updated: 2025/11/22 19:24:20 by dievarga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS  = -Wall -Wextra -Werror -I.
 NAME    = libftprintf.a
 
 # Source and object files
-SRCS	= ft_printf.c ft_
+SRCS	= ft_printf.c ft_decimals.c ft_chars.c ft_strings.c ft_hexu.c ft_hexl.c ft_pointers.c ft_unsigned.c
 
 OBJ     = $(SRCS:%.c=%.o)
 HEADER = libftprintf.h

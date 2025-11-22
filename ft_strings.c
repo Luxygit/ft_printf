@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chars.c                                         :+:      :+:    :+:   */
+/*   ft_strings.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 18:47:04 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/21 19:13:13 by dievarga         ###   ########.fr       */
+/*   Created: 2025/11/19 13:53:34 by dievarga          #+#    #+#             */
+/*   Updated: 2025/11/21 19:13:25 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_chars(va_list *args, int *count)
+void	ft_strings(va_list *args, int *count)
 {
-	char	ch;
+	char	*str;
+	int		i;
 
-	ch = (char)va_arg(*args, int);
-	write(1, &ch, 1);
-	(*count)++;
+	i = 0;
+	str = va_arg(*args, char *);
+	if (!str)
+		str = NULL;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		(*count)++;
+		i++;
+	}
 }
