@@ -6,7 +6,7 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 18:29:20 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/22 20:53:55 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/22 22:33:02 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,20 @@ static void	ft_printchar(char c, int *count)
 	(*count)++;
 }
 
+static void	ft_scan(const char **fmt, va_list *args, int *count)
+{
+	if (**fmt == '%')
+	{
+		(*fmt)++;
+		if(**fmt == '%')
+			ft_printchar('%', count);
+		else if (**fmt)
+			ft_detect(fmt, args, count);
+	}
+	else
+		ft_printchar(**fmt, count);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	va_list		args;
@@ -51,16 +65,7 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	while (*format)
 	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format)
-				ft_detect(&format, &args, &count);
-			else
-				ft_printchar('%', &count);
-		}
-		else
-			ft_printchar(*format, &count);
+		ft_scan(&format, &args, &count);
 		if (*format)
 			format++;
 	}

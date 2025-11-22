@@ -6,7 +6,7 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 15:58:26 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/22 17:05:41 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/22 21:56:05 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_decimals(va_list *args, int *count)
 	int	n;
 
 	n = (int)va_arg(*args, int);
-	if (n < -2147483647 || n > 2147483647)
+	if (n < -2147483648 || n > 2147483647)
 		return ;
 	ft_putnbr(n, count);
 }

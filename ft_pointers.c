@@ -6,7 +6,7 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:10:00 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/22 20:52:17 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/22 21:38:55 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_pointers(va_list *args, int *count)
 	address = (unsigned long)va_arg(*args, void *);
 	if (address == 0)
 	{
-		write(1, "(nil)", 5);
-		(*count) += 5;
+		write(1, "0x0", 3);
+		(*count) += 3;
 		return ;
 	}
 	write(1, "0x", 2);

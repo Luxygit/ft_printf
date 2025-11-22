@@ -6,7 +6,7 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:53:34 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/21 19:13:25 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/22 21:50:30 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_strings(va_list *args, int *count)
 	i = 0;
 	str = va_arg(*args, char *);
 	if (!str)
-		str = NULL;
+		str = "(null)";
 	while (str[i])
 	{
 		write(1, &str[i], 1);
