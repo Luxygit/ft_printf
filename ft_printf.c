@@ -6,7 +6,7 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 18:29:20 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/24 19:19:53 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:49:05 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,28 @@ int	ft_printf(const char *format, ...)
 
 /*
 ft_printf function takes a format especifier 
-for an undefinedi number of times telling us
+for an undefined number of times telling us
 what will be printed.
 As a variadic function with the va_list args
-it can 
-it initializes the va_list type args and cpy
-and va_starts initializes the first argument
-
+it can receive  multiple arguments and
+it goes to the next one in every call.
+It declares the va_list-type args
+and va_starts initializes the list using the
+last named parameter.
+Then Va_arg reads values in order and 
+according to the types they were passed.
+The last named param cant be char,short or
+float otherwise itll show undefined behav.
+Passing Char or short to ... promotes them
+to int. Float to Double. So for char it 
+must be retrieved with va_arg(format, int).
+The list must know what and how many times
+to fetch using a counter or a format string
+or NULL.
+va_copy is used to create a copy of the list
+that can be iterated and keep the original.
+Va_end closes the list and frees allocated
+mem, important to do it before every return.
 
 */
 
