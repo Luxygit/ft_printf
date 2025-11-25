@@ -6,11 +6,11 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 18:47:04 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/21 19:13:13 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:56:34 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_chars(va_list *args, int *count)
 {

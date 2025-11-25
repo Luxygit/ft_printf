@@ -6,11 +6,11 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 18:29:20 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/25 10:49:05 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/25 13:17:53 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_detect(const char **p, va_list *args, int *count)
 {
@@ -41,7 +41,7 @@ static void	ft_scan(const char **fmt, va_list *args, int *count)
 	if (**fmt == '%')
 	{
 		(*fmt)++;
-		if(**fmt == '%')
+		if (**fmt == '%')
 		{
 			write(1, "%", 1);
 			(*count)++;
@@ -101,14 +101,16 @@ Va_end closes the list and frees allocated
 mem, important to do it before every return.
 
 */
-
+/*
 #include <stdio.h>
 int	main(void)
 {
-	int	a = ft_printf("ft_printf prints %% %%j %c %s %d %i %u %p %x %X\n",'a', "hola", -10, -214, 5, "asd", 123, 123);
-	int	b = printf("og printf prints %% %%j %c %s %d %i %u %p %x %X\n", 'a', "hola", -10, -214, 5, "asd", 123, 123);
+	int	a = ft_printf("ft_printf prints %% %%j %c %s %d %i %u %p %x %X\n",
+'a', "hola", -10, -214, 5, "asd", 123, 123);
+	int	b = printf("og printf prints %% %%j %c %s %d %i %u %p %x %X\n",
+ 'a', "hola", -10, -214, 5, "asd", 123, 123);
 	printf("ft_printf returns %d chars\nog printf returns %d chars\n", a, b);
-
+	
 	ft_printf("pointer test %p\n", (void *)"asd");
 	printf("pointer test %p\n", (void *)"asd");
 	ft_printf("char test %c\n", '0');
@@ -125,5 +127,7 @@ int	main(void)
 	printf("lower hex test %x\n", -224748364);
 	ft_printf("upper hex test %X\n", -1);
 	printf("upper hex test %X\n", -1);
+	ft_printf(" %p %p ", 0 , 0);
+	printf(" %p %p ", (void *)0, (void *)0);
 	return (0);
-}
+}*/

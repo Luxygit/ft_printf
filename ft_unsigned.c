@@ -6,11 +6,11 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 19:12:18 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/21 21:42:32 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:58:16 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_putnbr(unsigned int n, int *count)
 {

@@ -6,11 +6,11 @@
 /*   By: dievarga <dievarga@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:10:00 by dievarga          #+#    #+#             */
-/*   Updated: 2025/11/22 21:38:55 by dievarga         ###   ########.fr       */
+/*   Updated: 2025/11/25 11:09:22 by dievarga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_puthexp(unsigned long n, int *count)
 {
@@ -32,8 +32,8 @@ void	ft_pointers(va_list *args, int *count)
 	address = (unsigned long)va_arg(*args, void *);
 	if (address == 0)
 	{
-		write(1, "0x0", 3);
-		(*count) += 3;
+		write(1, "(nil)", 5);
+		(*count) += 5;
 		return ;
 	}
 	write(1, "0x", 2);
